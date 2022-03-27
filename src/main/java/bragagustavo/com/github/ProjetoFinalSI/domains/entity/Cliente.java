@@ -47,4 +47,15 @@ public class Cliente implements Serializable {
     @JsonIgnore
     @OneToMany
     private List<Servicos> servicos;
+
+    public Cliente(Integer id, String nome, String cpf, String email, String telefone) {
+
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+    }
 }
+
+
