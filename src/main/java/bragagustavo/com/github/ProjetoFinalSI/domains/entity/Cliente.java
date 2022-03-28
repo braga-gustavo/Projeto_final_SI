@@ -46,7 +46,7 @@ public class Cliente implements Serializable {
 
     @JsonIgnore
     @OneToMany
-    private List<Servicos> servicos;
+    private List<Servico> servicos;
 
     public Cliente(Integer id, String nome, String cpf, String email, String telefone) {
 
