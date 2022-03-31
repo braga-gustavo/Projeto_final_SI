@@ -1,16 +1,15 @@
 package bragagustavo.com.github.ProjetoFinalSI.controller;
 
 import bragagustavo.com.github.ProjetoFinalSI.domains.entity.Cliente;
+import bragagustavo.com.github.ProjetoFinalSI.dto.ClienteDto;
 import bragagustavo.com.github.ProjetoFinalSI.repository.ClienteRepository;
 import bragagustavo.com.github.ProjetoFinalSI.service.ClienteService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -30,10 +29,19 @@ public class ClienteController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> inserirCliente(@RequestBody @Valid Cliente cliente){
+    public ResponseEntity<Void> inserirCliente(@RequestBody @Valid Cliente cliente) {
         clienteService.inserirCliente(cliente);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
                 .buildAndExpand(cliente.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> updateCliente(@PathVariable Integer id, @Valid @RequestBody ClienteDto clienteDto) {
+
+        Cliente cliente = clienteService.fromDto(clienteDto);
+        cliente.setId(id);
+        clienteService.updateService(cliente);
+        return ResponseEntity.noContent().build();
     }
 }

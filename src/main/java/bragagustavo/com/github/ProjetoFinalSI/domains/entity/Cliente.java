@@ -18,7 +18,7 @@ import java.util.List;
 @Table(name = "cliente")
 public class Cliente implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; //Criptografa o codigo,
 
     @Id
     @Column(name = "id")

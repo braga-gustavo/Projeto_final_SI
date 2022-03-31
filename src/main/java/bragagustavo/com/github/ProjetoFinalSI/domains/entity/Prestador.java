@@ -12,8 +12,8 @@ import java.io.Serializable;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "progamador")
-public class Programador implements Serializable {
+@Table(name = "prestador")
+public class Prestador implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,7 +40,7 @@ public class Programador implements Serializable {
     @Column(name = "senha")
     private String senha;
 
-    public Programador(int id, String nome, String cpf, String email, String telefone) {
+    public Prestador(int id, String nome, String cpf, String email, String telefone) {
 
         this.id = id;
         this.nome = nome;
@@ -49,7 +49,7 @@ public class Programador implements Serializable {
         this.telefone = telefone;
     }
 
-    public Programador(int id, String nome, String cpf, String email, String telefone, String senha) {
+    public Prestador(int id, String nome, String cpf, String email, String telefone, String senha) {
 
         this.id = id;
         this.nome = nome;
