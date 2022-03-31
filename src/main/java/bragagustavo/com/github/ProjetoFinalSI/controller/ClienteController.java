@@ -4,11 +4,8 @@ import bragagustavo.com.github.ProjetoFinalSI.domains.entity.Cliente;
 import bragagustavo.com.github.ProjetoFinalSI.dto.ClienteDto;
 import bragagustavo.com.github.ProjetoFinalSI.repository.ClienteRepository;
 import bragagustavo.com.github.ProjetoFinalSI.service.ClienteService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -41,7 +38,7 @@ public class ClienteController {
 
         Cliente cliente = clienteService.fromDto(clienteDto);
         cliente.setId(id);
-        clienteService.updateService(cliente);
+        clienteService.updateCliente(cliente);
         return ResponseEntity.noContent().build();
     }
 }

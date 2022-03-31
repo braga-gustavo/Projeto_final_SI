@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = ClienteUpdateValidator.class )
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface prestadorUpdate {
+public @interface ClienteUpdate {
 
     String mesage() default "Erro de validação";
 

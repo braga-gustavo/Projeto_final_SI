@@ -7,7 +7,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-
 @ClienteUpdate
 public class ClienteDto implements Serializable {
 
