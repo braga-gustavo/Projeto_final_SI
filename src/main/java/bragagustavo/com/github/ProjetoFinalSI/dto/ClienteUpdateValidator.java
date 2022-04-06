@@ -5,7 +5,6 @@ import bragagustavo.com.github.ProjetoFinalSI.exceptions.FieldMessage;
 import bragagustavo.com.github.ProjetoFinalSI.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerMapping;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -41,9 +40,12 @@ public class ClienteUpdateValidator implements ConstraintValidator<ClienteUpdate
         }
 
         for (FieldMessage e : list){
+
             constraintValidatorContext
                     .disableDefaultConstraintViolation();
-            constraintValidatorContext.buildConstraintViolationWithTemplate((e.getMessage())).addPropertyNode(e.getFieldName())
+
+            constraintValidatorContext.buildConstraintViolationWithTemplate(e.getMessage())
+                    .addPropertyNode(e.getFieldName())
                     .addConstraintViolation();
         }
 

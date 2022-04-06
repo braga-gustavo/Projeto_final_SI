@@ -5,12 +5,13 @@ import bragagustavo.com.github.ProjetoFinalSI.dto.ClienteDto;
 import bragagustavo.com.github.ProjetoFinalSI.repository.ClienteRepository;
 import bragagustavo.com.github.ProjetoFinalSI.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -41,4 +42,28 @@ public class ClienteController {
         clienteService.updateCliente(cliente);
         return ResponseEntity.noContent().build();
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteCliente(@PathVariable Integer id){
+        clienteService.deleteCliente(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Cliente> findCliente(@PathVariable  Integer id) {
+        Cliente cliente = clienteService.findCliente(id);
+        return ResponseEntity.ok().body(cliente);
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.FOUND)
+    public List<Cliente> findAll() {
+        return clienteService.findAll();
+
+    }
+
+
+
+
 }

@@ -31,11 +31,10 @@ public class Cliente implements Serializable {
 
     @Column(name = "cpf")
     @NotEmpty(message = "Campo CPF é obrigatório!")
-    @CPF(message = "CPF Inválido!")
     private String cpf;
 
 
-    @Column(unique = true, name = "email")
+    @Column(name = "email")
     private String email;
 
     @Column(name = "telefone")
@@ -56,6 +55,8 @@ public class Cliente implements Serializable {
         this.email = email;
         this.telefone = telefone;
     }
+
+
 }
 
 

@@ -1,6 +1,7 @@
 package bragagustavo.com.github.ProjetoFinalSI.service;
 
 import bragagustavo.com.github.ProjetoFinalSI.domains.entity.Cliente;
+import bragagustavo.com.github.ProjetoFinalSI.dto.ClienteDto;
 import bragagustavo.com.github.ProjetoFinalSI.exceptions.ObjectNotFoundException;
 import bragagustavo.com.github.ProjetoFinalSI.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,13 @@ public class ClienteService {
         clienteToUpdate.setNome(cliente.getNome());
         clienteToUpdate.setEmail(cliente.getEmail());
         clienteToUpdate.setTelefone(cliente.getTelefone());
+    }
+
+    public Cliente fromDto(ClienteDto clienteDto){
+        return new Cliente(clienteDto.getId(),
+                clienteDto.getNome(),
+                clienteDto.getCpf(),
+                clienteDto.getEmail(),
+                clienteDto.getTelefone());
     }
 }
