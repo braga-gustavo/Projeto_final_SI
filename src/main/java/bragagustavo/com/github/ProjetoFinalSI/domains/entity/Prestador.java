@@ -20,7 +20,7 @@ public class Prestador implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "nome")
     @NotEmpty(message = "Campo nome é OBRIGATÓRIO")
@@ -40,7 +40,7 @@ public class Prestador implements Serializable {
     @Column(name = "senha")
     private String senha;
 
-    public Prestador(int id, String nome, String cpf, String email, String telefone) {
+    public Prestador(Integer id, String nome, String cpf, String email, String telefone) {
 
         this.id = id;
         this.nome = nome;
@@ -49,7 +49,7 @@ public class Prestador implements Serializable {
         this.telefone = telefone;
     }
 
-    public Prestador(int id, String nome, String cpf, String email, String telefone, String senha) {
+    public Prestador(Integer id, String nome, String cpf, String email, String telefone, String senha) {
 
         this.id = id;
         this.nome = nome;
@@ -58,4 +58,6 @@ public class Prestador implements Serializable {
         this.telefone = telefone;
         this.senha = senha;
     }
+
+
 }

@@ -56,7 +56,14 @@ public class Cliente implements Serializable {
         this.telefone = telefone;
     }
 
-
+    public Cliente(Integer id, @NotEmpty(message = "Campo nome é obrigatório!") String nome, @NotEmpty(message = "Campo CPF é obrigatório!") String cpf, String email, String telefone, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.senha = senha;
+    }
 }
 
 
