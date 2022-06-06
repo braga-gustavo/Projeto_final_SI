@@ -23,7 +23,7 @@ public class Prestador implements Serializable {
     private Integer id;
 
     @Column(name = "nome")
-    @NotEmpty(message = "Campo nome é OBRIGATÓRIO")
+    @NotEmpty(message = "Campo nome é OBRIGATÓRIO!")
     private String nome;
 
     @CPF(message = "Informe um CPF válido")
@@ -36,21 +36,11 @@ public class Prestador implements Serializable {
     @Column(name = "telefone")
     private String telefone;
 
-    @JsonIgnore              //usado para ignorar o a linha no arquivo JSON (usado pois senha nao é obrigatorio)
+    @JsonIgnore
     @Column(name = "senha")
     private String senha;
 
-    public Prestador(Integer id, String nome, String cpf, String email, String telefone) {
-
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-        this.telefone = telefone;
-    }
-
     public Prestador(Integer id, String nome, String cpf, String email, String telefone, String senha) {
-
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -59,5 +49,11 @@ public class Prestador implements Serializable {
         this.senha = senha;
     }
 
-
+    public Prestador(Integer id, String nome, String cpf, String email, String telefone) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+    }
 }

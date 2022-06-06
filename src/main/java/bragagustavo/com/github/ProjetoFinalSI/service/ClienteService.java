@@ -16,7 +16,7 @@ import java.util.Optional;
 public class ClienteService {
 
     @Autowired
-    ClienteRepository clienteRepository;
+    private ClienteRepository clienteRepository;
 
     @Transactional
     public Cliente inserirCliente(Cliente cliente) {
@@ -25,42 +25,33 @@ public class ClienteService {
         return clienteSalvo;
     }
 
-    public Cliente updateCliente(Cliente cliente) {
-
+    public Cliente updateCliente(Cliente cliente){
         Cliente clienteToUpdate = findCliente(cliente.getId());
         updateData(clienteToUpdate, cliente);
         return clienteRepository.save(clienteToUpdate);
-
     }
 
-    public void deleteCliente(Integer id) {
+    public void deleteCliente(Integer id){
         findCliente(id);
-
-        try {
-
+        try{
             clienteRepository.deleteById(id);
-
-        } catch (DataIntegrityViolationException e) {
-
-            throw new ObjectNotFoundException("Cliente não existe para ser deletado");
-
+        } catch (DataIntegrityViolationException e){
+            throw new ObjectNotFoundException("Cliente não Existe para ser Deletado");
         }
-
     }
 
-    public List<Cliente> findAll(){ //busca todos os clientes da base
-
+    public List<Cliente> findAll(){
         return clienteRepository.findAll();
     }
 
-    public Cliente findCliente(Integer id) { // Gerador de erro
+
+    public Cliente findCliente(Integer id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
-        return cliente.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", tipo: "
+        return cliente.orElseThrow(() -> new ObjectNotFoundException("Cliente Não Encontrado! Id: " + id + ", tipo: "
                 + Cliente.class.getName()));
     }
 
     public void updateData(Cliente clienteToUpdate, Cliente cliente) {
-
         clienteToUpdate.setNome(cliente.getNome());
         clienteToUpdate.setEmail(cliente.getEmail());
         clienteToUpdate.setTelefone(cliente.getTelefone());
@@ -73,4 +64,6 @@ public class ClienteService {
                 clienteDto.getEmail(),
                 clienteDto.getTelefone());
     }
+
+
 }

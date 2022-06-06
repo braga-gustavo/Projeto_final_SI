@@ -26,7 +26,6 @@ public class Servico implements Serializable {
     private Cliente cliente;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "programador_id")
     private Prestador prestador;
 
@@ -37,6 +36,7 @@ public class Servico implements Serializable {
     private String descricaoServico;
 
     @Column(name = "data_servico")
+    @JsonIgnore
     private LocalDateTime dataServico;
 
     @Column(name = "orcamento_servico", precision = 20, scale = 2)
@@ -44,6 +44,10 @@ public class Servico implements Serializable {
 
     @Column(name = "status_servico")
     private StatusServico statusServico;
+
+    @Column(name = "anotacao")
+    private String anotacao;
+
 
 
     public Servico(Integer id, Cliente cliente, Prestador prestador, String tituloServico, String descricaoServico, LocalDateTime dataServico, Double orcamentoServico, StatusServico statusServico) {
@@ -66,4 +70,16 @@ public class Servico implements Serializable {
         this.orcamentoServico = orcamentoServico;
         this.statusServico = statusServico;
     }
+
+
+    public Servico(Cliente cliente, String tituloServico, String descricaoServico, LocalDateTime now, Double orcamentoServico, StatusServico statusServico) {
+        this.cliente = cliente;
+        this.tituloServico = tituloServico;
+        this.descricaoServico = descricaoServico;
+        this.dataServico = dataServico;
+        this.orcamentoServico = orcamentoServico;
+        this.statusServico = statusServico;
+    }
+
+
 }

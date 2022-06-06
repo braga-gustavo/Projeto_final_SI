@@ -36,7 +36,7 @@ public class ClienteController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateCliente(@PathVariable Integer id, @Valid @RequestBody ClienteDto clienteDto) {
-
+        //Path Variable pega o valor que for enviado no caminho ("id" nesse caso)
         Cliente cliente = clienteService.fromDto(clienteDto);
         cliente.setId(id);
         clienteService.updateCliente(cliente);

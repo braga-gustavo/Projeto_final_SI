@@ -15,7 +15,7 @@ import java.util.Optional;
 public class PrestadorService {
 
     @Autowired
-    PrestadorRepository prestadorRepository;
+    private PrestadorRepository prestadorRepository;
 
     @Transactional
     public Prestador inserirPrestador(Prestador prestador) {
@@ -25,42 +25,35 @@ public class PrestadorService {
     }
 
     public Prestador updatePrestador(Prestador prestador) {
-
-        Prestador prestadorToUpdate = findPrestador(prestador.getId());
-        updateData(prestadorToUpdate, prestador);
-        return prestadorRepository.save(prestadorToUpdate);
-
+        Prestador prestadorUpdate = findPrestador(prestador.getId());
+        updateData(prestadorUpdate, prestador);
+        return prestadorRepository.save(prestadorUpdate);
     }
 
     public void deletePrestador(Integer id) {
         findPrestador(id);
         try {
-
             prestadorRepository.deleteById(id);
-
         } catch (DataIntegrityViolationException e) {
-
-            throw new ObjectNotFoundException("Prestador nao existe não existe para ser deletado");
-
+            throw new ObjectNotFoundException("Prestador não Existe para ser Deletado");
         }
     }
 
-    public List<Prestador> findAll() { //busca todos os prestadores da base
-
+    public List<Prestador> findAll() {
         return prestadorRepository.findAll();
     }
 
-    public Prestador findPrestador(Integer id) { // Gerador de erro
+
+    public Prestador findPrestador(Integer id) {
         Optional<Prestador> prestador = prestadorRepository.findById(id);
-        return prestador.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", tipo: "
+        return prestador.orElseThrow(() -> new ObjectNotFoundException("Prestador Não Encontrado! Id: " + id + ", tipo: "
                 + Prestador.class.getName()));
     }
 
-    public void updateData(Prestador prestadorUpdate, Prestador prestador) {
-
-        prestadorUpdate.setNome(prestador.getNome());
-        prestadorUpdate.setEmail(prestador.getEmail());
-        prestadorUpdate.setTelefone(prestador.getTelefone());
+    public void updateData(Prestador prestadorToUpdate, Prestador prestador) {
+        prestadorToUpdate.setNome(prestador.getNome());
+        prestadorToUpdate.setEmail(prestador.getEmail());
+        prestadorToUpdate.setTelefone(prestador.getTelefone());
     }
 
     public Prestador fromDto(PrestadorDto prestadorDto) {
@@ -70,4 +63,6 @@ public class PrestadorService {
                 prestadorDto.getEmail(),
                 prestadorDto.getTelefone());
     }
+
+
 }

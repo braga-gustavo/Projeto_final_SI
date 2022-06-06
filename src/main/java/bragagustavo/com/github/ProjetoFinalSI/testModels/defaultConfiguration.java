@@ -1,4 +1,4 @@
-package bragagustavo.com.github.ProjetoFinalSI.testModels;
+/* package bragagustavo.com.github.ProjetoFinalSI.testModels;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,4 +26,4 @@ public class defaultConfiguration {
         dbService.instantiateTestDatabase();
         return false;
     }
-}
+} */

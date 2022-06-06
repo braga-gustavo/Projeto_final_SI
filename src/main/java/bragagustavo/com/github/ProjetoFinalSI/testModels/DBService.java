@@ -1,4 +1,4 @@
-package bragagustavo.com.github.ProjetoFinalSI.testModels;
+ /*package bragagustavo.com.github.ProjetoFinalSI.testModels;
 
 import bragagustavo.com.github.ProjetoFinalSI.domains.entity.Cliente;
 import bragagustavo.com.github.ProjetoFinalSI.domains.entity.Prestador;
@@ -30,7 +30,7 @@ public class DBService {
 
         Cliente c1 = new Cliente(null, "Pedro solicitante","32271188075", "pedroteste@gmail.com", "123456789", "111111");
         Cliente c2 = new Cliente(null, "Gustavo solicitante","34933620059", "gustavoteste@gmail.com", "123456789", "222222");
-        Cliente c3 = new Cliente(null, "Leo solicitante","63954546094", "leoteste@gmail.com", "123456789", "333333");
+        Cliente c3 = new Cliente(null, "Otávio solicitante","63954546094", "otavioteste@gmail.com", "123456789", "333333");
 
         Prestador p1 = new Prestador(null, "Prestador Bozena", "23798792062", "bozenateste@gmail.com", "123456789", "444444");
         Prestador p2 = new Prestador(null, "Prestador Judite", "36852210006", "juditeteste@gmail.com", "123456789", "555555");
@@ -58,4 +58,4 @@ public class DBService {
     }
 
 
-}
+} */

@@ -18,7 +18,7 @@ import java.util.List;
 @Table(name = "cliente")
 public class Cliente implements Serializable {
 
-    private static final long serialVersionUID = 1L; //Criptografa o codigo,
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "id")
@@ -26,15 +26,15 @@ public class Cliente implements Serializable {
     private Integer id;
 
     @Column(name = "nome", length = 100)
-    @NotEmpty(message = "Campo nome é obrigatório!")
+    @NotEmpty(message = "Campo nome é OBRIGATORIO")
     private String nome;
 
     @Column(name = "cpf")
-    @NotEmpty(message = "Campo CPF é obrigatório!")
+    @NotEmpty(message = "Campo cpf é OBRIGATORIO")
+    @CPF(message = "Informe um CPF Válido")
     private String cpf;
 
-
-    @Column(name = "email")
+    @Column(unique = true, name = "email")
     private String email;
 
     @Column(name = "telefone")
@@ -47,16 +47,17 @@ public class Cliente implements Serializable {
     @OneToMany
     private List<Servico> servicos;
 
-    public Cliente(Integer id, String nome, String cpf, String email, String telefone) {
 
-        this.id = id;
+    public Cliente(Integer identidade, String nome, String cpf, String email, String telefone) {
+        this.id = identidade;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
     }
 
-    public Cliente(Integer id, @NotEmpty(message = "Campo nome é obrigatório!") String nome, @NotEmpty(message = "Campo CPF é obrigatório!") String cpf, String email, String telefone, String senha) {
+
+    public Cliente(Integer id, String nome, String cpf, String email, String telefone, String senha) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -64,6 +65,8 @@ public class Cliente implements Serializable {
         this.telefone = telefone;
         this.senha = senha;
     }
+
+
 }
 
 

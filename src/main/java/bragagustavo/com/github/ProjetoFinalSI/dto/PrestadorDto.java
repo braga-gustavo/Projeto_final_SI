@@ -12,13 +12,14 @@ import java.io.Serializable;
 @PrestadorUpdate
 public class PrestadorDto implements Serializable {
 
-    private static final Long seriazlVerisionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    private int id;
+    private Integer id;
 
-    @NotEmpty(message = "Nome nao pode ser vazio")
-    @Length(min = 5, max = 125, message = "O nome deve ter entre 5 e 125 caracteres")
+    @NotEmpty(message = "Nome não pode ser vazio")
+    @Length(min = 5, max = 120, message = "O tamanho deve ser entre 5 e 120 caracteres")
     private String nome;
+
 
     @NotEmpty(message = "Email não pode ser vazio")
     @Email(message = "Email invalido")
@@ -26,8 +27,14 @@ public class PrestadorDto implements Serializable {
 
     private String telefone;
 
-    public PrestadorDto(int id, String nome, String email, String telefone, String cpf) {
+    @CPF
+    private String cpf;
 
+
+    public PrestadorDto() {
+    }
+
+    public PrestadorDto(Integer id, String nome, String email, String telefone, String cpf) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -35,25 +42,19 @@ public class PrestadorDto implements Serializable {
         this.cpf = cpf;
     }
 
-    @CPF
-    private String cpf;
-
-
     public PrestadorDto(Prestador prestador) {
-
         this.id = prestador.getId();
         this.nome = prestador.getNome();
         this.email = prestador.getEmail();
         this.telefone = prestador.getTelefone();
         this.cpf = prestador.getCpf();
-
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -89,3 +90,4 @@ public class PrestadorDto implements Serializable {
         this.cpf = cpf;
     }
 }
+
